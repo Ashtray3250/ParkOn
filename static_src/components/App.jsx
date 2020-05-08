@@ -3,15 +3,22 @@ import ReactDOM from "react-dom";
 import MainScreen from './MainScreen';
 import PropTypes from "prop-types";
 import style from "./styles/style.css";
-import {useMediaQuery} from 'react-responsive';
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import Map from "./Map";
-import About from './About';
+import Welcome from './Welcome';
 import PhoneValidation from './PhoneValidation';
 import EmailValidation from './EmailValidation';
 import logo from "./img/logo.png";
 import Training from "./Training";
 import Letstraining from "./Letstraining";
+import Personal from "./Personal";
+import Feedback from "./Feedback";
+import Changereg from "./Changereg";
+import Emailregistration from "./Emailregistration";
+import Changeauto from "./Changeauto";
+import Phonereg from "./Phonereg";
+import Emailauto from "./Emailauto";
+
 
 
 
@@ -28,8 +35,28 @@ render(){
 	 		<div className='App'>
 				<Switch>
 
-					<Route path="/About">
-						<About/>
+					<Route path="/Welcome">
+						<Welcome/>
+					</Route>
+
+					<Route path="/Changereg">
+						<Changereg/>
+					</Route>
+
+					<Route path="/Emailregistration">
+						<Emailregistration/>
+					</Route>
+
+					<Route path="/Changeauto">
+						<Changeauto/>
+					</Route>
+
+					<Route path="/Emailauto">
+						<Emailauto/>
+					</Route>
+
+					<Route path="/Phonereg">
+						<Phonereg/>
 					</Route>
 					
 					<Route path="/Map">
@@ -50,7 +77,16 @@ render(){
 
 					<Route path="/Letstraining">
 						<Letstraining/>
-					</Route>		
+					</Route>
+
+					<Route path="/Personal">
+						<Personal/>
+					</Route>
+
+					<Route path="/Feedback">
+						<Feedback/>
+					</Route>			
+							
 					
 					<Route path="/">
 						<MainScreen />

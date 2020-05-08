@@ -4,11 +4,40 @@
 	<meta charset="UTF-8">
 	<title>ParkOn</title>
 	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="manifest" href="./manifest/manifest.json">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#44F1A6">
 </head>
 <body>
-	<div id="root"></div>
+	<div id="root">
+   <h1 style="text-align: center;position: absolute;top: 40%;left: 35%">Загрузка...</h1>
+   <img style="text-align: center;position: absolute;top: 55%;left:30%" src="static_src/components/img/loader.gif">
+
+
+  </div>
+
+
 	<script src="static/build/app.js"></script>
+
+	<script>
+   if ('serviceWorker' in navigator) {
+       window.addEventListener('load', function() {
+           navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+               // Registration was successful
+               console.log('ServiceWorker успешно зарегистрирован со сферой действия: ', registration.scope);
+               }, function(err) {
+               // registration failed :(
+               console.log('ServiceWorker не удалось зарегистрировать: ', err);
+           }).catch(function(err) {
+               console.log(err)
+           });
+       });
+   } else {
+       console.log('ServiceWorker не поддерживается');
+   };
+
+</script>
+
 </body>
 </html>
 
