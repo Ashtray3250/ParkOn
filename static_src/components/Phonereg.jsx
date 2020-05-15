@@ -75,7 +75,7 @@ validateFunction=()=>{   //Функция валидации
 };
 
 
-//----------Фенкция генерации одноразового кода------------------//
+//----------Функция генерации одноразового кода------------------//
 
 generateCommonCode=()=>{
   let code = Math.floor(Math.random()*100000) //Генерация от 4х до 5и знаков
@@ -95,7 +95,7 @@ validationButtonHandler = (e) => {
     
     }else if(codeSended === true && generatedCode != ' ' && passwordInput === generatedCode && validate === true) {
      if(this.state.authorized === true){
-      window.location = "http:\//Map";
+      window.location = "/Changeauto";
         this.sendData();
       }else{
         this.sendData();
@@ -129,10 +129,10 @@ fetch(`http:\//localhost:3000/?phone=${input}&password=${passwordInput}`,{mode:'
       sendData = () => {
         axios({
         method:'post',
-        url:`${this.state.serverRegisterURL}`,
+        url:'http://localhost:3000/api/auth/register',
         data:{
-          email:`${this.state.input}`,
-          password:`${this.state.passwordInput}`
+          email:`this.state.input`,
+          password:`this.state.passwordInput`
         }
       })
         .then( (response)=>{

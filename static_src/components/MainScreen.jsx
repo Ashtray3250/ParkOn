@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import logo from "./img/logo.png";
-import {Link} from "react-router-dom";
+import {Link} from "react-router-dom"
 
 
 export default class MainScreen extends React.Component{

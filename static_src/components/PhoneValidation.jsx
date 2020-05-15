@@ -3,8 +3,7 @@ import ReactDOM from "react-dom";
 import {Link} from 'react-router-dom';
 import validationFaild from "./img/validationFaild.png";
 import validationSuccess from "./img/validationSuccess.png";
-
-
+import axios from 'axios';
 
 export default class LoginPhone extends React.Component {
 
@@ -101,7 +100,9 @@ validationButtonHandler = (e) => {
       alert("Вы ввели некорректный код");
     }else if(validate !== true && codeSended === true || codeSended !== true   && input.length < 15) {
       alert('Вы ввели неверный номер телефона');
-     
+
+
+
 
     //----------SMS API---------------//
 
@@ -119,7 +120,19 @@ fetch(`http:\//localhost:3000/?phone=${input}&password=${passwordInput}`,{mode:'
 
 
 //----------------Отправка данных на сервер---------//
-    //Эта функция находится в разработке
+axiosRequest = () => {
+	const {input, passwordInput} = this.state;
+	axios.post('http://localhost:3000/api/auth/login?', {
+		"email": `${input}`,
+		"password": `${passwordInput}`
+	  })
+	  .then(function (response) {
+		console.log(response);
+	  })
+	  .catch(function (error) {
+		console.log(error);
+	  });
+}
 
 
 
@@ -211,24 +224,21 @@ const {codeSended,generatedCode,passwordInput,input,validate} = this.state;
               placeholder="• • • • •" 
               onChange={ ()=>{this.passwordHandler(event.target.value)}}
               maxLength="5"/>
-
-
+   <img className="validationInputFieldIndication"src={validationSuccess}
+                style={generatedCode === passwordInput ? {display:'block'}:{display:'none'} }
+            />
      
-     <img className="validationInputFieldIndication"src={validationSuccess}
-        style={generatedCode === passwordInput ? {display:'block'}:{display:'none'} }
-     />
-     
-     <img className="validationInputFieldIndication"src={validationFaild}
-        style={generatedCode !== passwordInput ? {display:'block'}:{display:'none'} }
-      />
-                <p className="validationErrorText" style={codeSended === true ? {display:'block'}:{display:'none'}, 
-                {color:"gray"} }>Мне не пришёл код.<a href="#">Отправить повторно</a></p>
-
-                
-        </div>
+          <img className="validationInputFieldIndication"src={validationFaild}
+            style={generatedCode !== passwordInput ? {display:'block'}:{display:'none'} }
+            />  
+            
+            <p className="validationErrorText" style={ codeSended === true && passwordInput !== generatedCode  ? {display:'block'} : {display:'none'} }>Мне не пришёл код.<a href="#">Отправить повторно</a></p>        
+    
+          </div>
       </div>
-  </div>
-        <button className="passwordSendButton" style={input.length > 15 || passwordInput.length > 4  ? { opacity:1} : {opacity:0.5}
+    </div>
+
+         <button className="passwordSendButton" style={validate === true || passwordInput === generatedCode  ? { opacity:1} : {opacity:0.5}
                                                            }
                 onClick={ ()=>{this.validationButtonHandler(event)}}
         > 

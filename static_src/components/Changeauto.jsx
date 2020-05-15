@@ -21,7 +21,7 @@ render(){
 				  			  Номер телефона
 				  		</Link>
 				
-						<Link to="/Emailauto" className="loginLink">
+						<Link to="/EmailValidation" className="loginLink">
 							  Электронная почта 
 						</Link>
 				</div>

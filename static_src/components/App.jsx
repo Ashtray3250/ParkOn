@@ -17,7 +17,7 @@ import Changereg from "./Changereg";
 import Emailregistration from "./Emailregistration";
 import Changeauto from "./Changeauto";
 import Phonereg from "./Phonereg";
-import Emailauto from "./Emailauto";
+import Stream from "./Stream";
 
 
 
@@ -51,9 +51,9 @@ render(){
 						<Changeauto/>
 					</Route>
 
-					<Route path="/Emailauto">
-						<Emailauto/>
-					</Route>
+					<Route path="/EmailValidation">
+						<EmailValidation />
+					</Route>	
 
 					<Route path="/Phonereg">
 						<Phonereg/>
@@ -65,11 +65,7 @@ render(){
 
 					<Route path="/PhoneValidation">
 						<PhoneValidation />
-					</Route>					
-
-					<Route path="/EmailValidation">
-						<EmailValidation />
-					</Route>					
+					</Route>								
 
 					<Route path="/Training">
 						<Training/>
@@ -85,6 +81,10 @@ render(){
 
 					<Route path="/Feedback">
 						<Feedback/>
+					</Route>	
+
+					<Route path="/Stream">
+						<Stream/>
 					</Route>			
 							
 					

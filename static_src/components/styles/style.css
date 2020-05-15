@@ -20,6 +20,14 @@ body {
 .App {
   height: 100%;
 }
+.loader {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  position: absolute;
+  top: 25%;
+}
 #root {
   display: block;
   width: 100%;
@@ -512,7 +520,6 @@ body {
   border: none;
   border-radius: 10px;
   font-size: 14px;
-  color: black;
   font-weight: bold;
   background-color: #44f1a6;
   opacity: 0.5;
@@ -531,10 +538,12 @@ body {
   }
 }
 .loginScreen .passwordSendButton p {
+  display: block;
   width: 100%;
   margin: 0;
   line-height: 40px;
   text-align: center;
+  color: black;
 }
 .LetsTrainingLink {
   display: block;
@@ -1128,7 +1137,6 @@ body {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
 }
-/* Gray 3 */
 .menu_list {
   display: block;
   position: relative;
@@ -1214,4 +1222,8 @@ a:-webkit-any-link {
   right: 15px;
   width: 15px;
   height: 12px;
+}
+#Stream canvas {
+  width: 90%;
+  padding: 20px 5%;
 }

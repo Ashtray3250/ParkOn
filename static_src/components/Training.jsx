@@ -20,7 +20,7 @@ export default class Training extends React.Component {
                       <p>
                         Регистрация
                         <br/>
-                        <span style={ {color:'gray'} }>прошла успешно</span>
+                        прошла успешно
                       </p>
                 </div>
       
