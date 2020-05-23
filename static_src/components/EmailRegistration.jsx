@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {Link} from 'react-router-dom';
-import Map from './Map';
+import MapModule from './MapModule';
 import validationFaild from "./img/validationFaild.png";
 import validationSuccess from "./img/validationSuccess.png";
-import axios from "axios";
 
 
 export default class Emailregistration extends React.Component {
@@ -19,7 +18,6 @@ export default class Emailregistration extends React.Component {
 		apiUrl:' ',
 		passwordInput:' ',
 	};
-
 
 inputHandler = (event) =>{
 setTimeout(()=>{
@@ -58,10 +56,7 @@ validateFunction=()=>{
   		this.setState({codeSended:true});
   		this.generateCommonCode();
   	 }else if(this.state.codeSended === true && this.state.generatedCode != ' ' && passwordInput === generatedCode  && validate === true){
-this.axiosRequest();
-		
-setTimeout (() => {window.location = "/Changeauto";}, 1000)
-      
+      window.location = "/Training";
   	}else {
   		alert("something went wrong");	
   	}
@@ -80,31 +75,18 @@ this.setState({passwordInput:Number(value) });
 },200);
 };
 
-axiosRequest = () => {
-	const {input, passwordInput} = this.state;
-	axios.post('http://localhost:3000/api/auth/register', {
-		"email": `${input}`,
-		"password": `${passwordInput}`
-	  })
-	  .then(function (response) {
-		console.log(response);
-	  })
-	  .catch(function (error) {
-		console.log(error);
-	  });
-}
 
 render(){
 	const {mailUsed,mailNotExist,codeSended,passwordInput,generatedCode,input,validate} = this.state;
 	return (
 
 	<div className="loginScreen">
-<div className="regwrapper">
 
 		<div className="registration">
-			<h1>Регистрация</h1>
+			<h3>Регистрация</h3>
 		</div>
 	
+	<div className="regwrapper">
 		<div className="validationInputRow">
 			
 			<p>Электронная почта</p>

@@ -5,6 +5,8 @@ import about_icon from "./img/about_icon.png";
 import learn_icon from "./img/learn_icon.png";
 import sup_icon from "./img/sup_icon.png";
 import logo from './img/logo.png'
+import private_personal from './img/private_personal.png'
+
 export default class Personal extends React.Component {
 
     state={
@@ -20,44 +22,50 @@ export default class Personal extends React.Component {
             <div className="personal_top">
                 <div className="personal_header">
                 
-                  <div className="feedback_logo">
-                      <img src={logo} alt="logo"/>
-                  </div>
-            <div className="close"></div>
+                      <p>Меню</p>
+                  <Link className="close" to="/MapModule" >
+                        </Link>    
                 </div>  
-               <div className="example">
-                <b>ivanovivan@example.com</b>
-                </div> 
             </div>
             
 
             
 
             <div className="linkpersonal">
+          <div className="linkList">
+            <div className="personal_link">
+                    <img className="personal_icons" src={private_personal}/>
+                        <Link to="/Personalroom" >
+                              Личный кабинет
+                        </Link>                                
+                    </div>
 
                     <div className="personal_link">
+                    <img className="personal_icons" src={about_icon}/>
                         <Link to="/About" >
                               О приложении
                         </Link>                       
-                                <img className="personal_icons" src={about_icon}/>
+                                
                     </div>
 
                     <div className="personal_link">    
-                        <Link to="/Training" >
+                    <img className="personal_icons" src={learn_icon}/>
+                        <Link to="/Letstraining" >
                               Обучение
                         </Link>
-                              <img className="personal_icons" src={learn_icon}/>
+                              
                     </div>          
         
                         
                         
                     <div className="personal_link bottom">
+                    <img className="personal_icons" src={sup_icon}/>
                           <Link to="/Feedback" >
                                  Обратная связь
                           </Link>
-                              <img className="personal_icons" src={sup_icon}/>
+                              
                     </div>
-
+                </div>
             </div>
         </div>
         );

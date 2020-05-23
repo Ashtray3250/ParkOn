@@ -4,20 +4,23 @@ import MainScreen from './MainScreen';
 import PropTypes from "prop-types";
 import style from "./styles/style.css";
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import Map from "./Map";
+import MapModule from "./MapModule";
 import Welcome from './Welcome';
 import PhoneValidation from './PhoneValidation';
 import EmailValidation from './EmailValidation';
 import logo from "./img/logo.png";
 import Training from "./Training";
 import Letstraining from "./Letstraining";
-import Personal from "./Personal";
 import Feedback from "./Feedback";
+import Personal from "./Personal";
+import About from "./About";
 import Changereg from "./Changereg";
 import Emailregistration from "./Emailregistration";
 import Changeauto from "./Changeauto";
 import Phonereg from "./Phonereg";
 import Stream from "./Stream";
+import Menutraining from "./Menutraining";
+import Personalroom from "./Personalroom";
 
 
 
@@ -26,7 +29,7 @@ import Stream from "./Stream";
 export default class App extends React.Component {
 
 	state={
-		loggedIn:'no',
+		userID:'5eb3d90369e0e7316090df6f',
 	}
 
 render(){
@@ -51,21 +54,21 @@ render(){
 						<Changeauto/>
 					</Route>
 
-					<Route path="/EmailValidation">
-						<EmailValidation />
-					</Route>	
-
 					<Route path="/Phonereg">
 						<Phonereg/>
 					</Route>
 					
-					<Route path="/Map">
-						<Map/>
+					<Route path="/MapModule">
+						<MapModule/>
 					</Route>
 
 					<Route path="/PhoneValidation">
 						<PhoneValidation />
-					</Route>								
+					</Route>					
+
+					<Route path="/EmailValidation">
+						<EmailValidation />
+					</Route>					
 
 					<Route path="/Training">
 						<Training/>
@@ -75,13 +78,27 @@ render(){
 						<Letstraining/>
 					</Route>
 
+					<Route path="/Menutraining">
+						<Menutraining/>
+					</Route>
+					
 					<Route path="/Personal">
 						<Personal/>
 					</Route>
 
+					<Route path="/Personalroom">
+						<Personalroom/>
+					</Route>
+
 					<Route path="/Feedback">
-						<Feedback/>
+						<Feedback userID={this.state.userID}/>
 					</Route>	
+
+
+					<Route path="/About">
+						<About/>
+					</Route>
+
 
 					<Route path="/Stream">
 						<Stream/>

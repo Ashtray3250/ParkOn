@@ -3,14 +3,9 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import logo from "./img/logo.png";
 import {Link} from "react-router-dom"
-
+import axios from "axios";
 
 export default class MainScreen extends React.Component{
-
-state={
-user:'User',
-loggedIn:'no',
-};
 
 
 loaddingRedirect = () => {
@@ -32,7 +27,7 @@ render(){
 	this.loaddingRedirect();
 	return (
 	<div className='mainScreen' >
-		<img src={logo} className="logo"/>
+	<div className="logo"><p>Park</p><div className="switch"><p className="circleText">ON</p><span className="switchCircle"></span></div></div>
 		</div>
 	);
   }

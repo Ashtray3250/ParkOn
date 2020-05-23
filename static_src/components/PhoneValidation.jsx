@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import {Link} from 'react-router-dom';
 import validationFaild from "./img/validationFaild.png";
 import validationSuccess from "./img/validationSuccess.png";
-import axios from 'axios';
+import MapModule from './MapModule';
+
 
 export default class LoginPhone extends React.Component {
 
@@ -83,7 +84,7 @@ generateCommonCode=()=>{
 
 //------------------------Функция кнопки------------------------//
 
-validationButtonHandler = (e) => {
+validationButtonHandler = (e) => { 
   const {codeSended,input,generatedCode,passwordInput,validate} = this.state;//Объявляем значения из state
     
     if(codeSended != true && input.length > 15 && validate === true){
@@ -91,18 +92,12 @@ validationButtonHandler = (e) => {
         this.setState({codeSended:true});
     
     }else if(codeSended === true && generatedCode != ' ' && passwordInput === generatedCode && validate === true) {
-     if(this.state.authorized === true){
-      window.location = "http:\//Map";
-      }else{
-      window.location ="/Training";
-     };
+      window.location ="/MapModule";
     }else if(validate === true && codeSended === true && generatedCode !== passwordInput){
       alert("Вы ввели некорректный код");
     }else if(validate !== true && codeSended === true || codeSended !== true   && input.length < 15) {
       alert('Вы ввели неверный номер телефона');
-
-
-
+     
 
     //----------SMS API---------------//
 
@@ -117,51 +112,6 @@ fetch(`http:\//localhost:3000/?phone=${input}&password=${passwordInput}`,{mode:'
     console.log(result)
   })
 }*/ 
-
-
-//----------------Отправка данных на сервер---------//
-axiosRequest = () => {
-	const {input, passwordInput} = this.state;
-	axios.post('http://localhost:3000/api/auth/login?', {
-		"email": `${input}`,
-		"password": `${passwordInput}`
-	  })
-	  .then(function (response) {
-		console.log(response);
-	  })
-	  .catch(function (error) {
-		console.log(error);
-	  });
-}
-
-
-
-
-
-      /*fetch( this.state.apiUrl ,{
-        method: 'GET',
-        mode:'no-cors',
-      })
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.items
-          });
-          console.log(result);
-        },
-        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не перехватывать исключения из ошибок в самих компонентах.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-*/
-
-//-------------------------------------------------------//
 
   };
 };
@@ -182,7 +132,7 @@ const {codeSended,generatedCode,passwordInput,input,validate} = this.state;
 		<div className="loginScreen">
 
       <div className="registration">
-      <h1>Авторизация</h1>
+      <h3>Авторизация</h3>
       </div>
       
     <div className="regwrapper">
@@ -190,7 +140,7 @@ const {codeSended,generatedCode,passwordInput,input,validate} = this.state;
     
       <div className="validationInputRow">
      
-      <p className="validationhead">Номер телефона</p>
+      <p>Номер телефона</p>
           <div className="inputRowComponent">
           
             <input onChange={this.inputHandler} 

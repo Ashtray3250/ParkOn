@@ -1,37 +1,57 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom';
-import Image4 from "./img/image4.png";
 import {Link} from "react-router-dom";
-import PhoneValidation from "./PhoneValidation";
-import EmailValidation from "./EmailValidation";
-
+import logo from './img/logo.png';
+import back_personal from './img/back_personal.png';
 
 export default class About extends React.Component {
 
-state={
-	images:[Image4],
-};
-
-currentSlide = () =>{
-	console.log('1');
-}
 
 
-render(){
-	return <div className="aboutScreen">
-		<p className="welcomeText">Добро пожаловать 
-		<br/>
-		в ParkOn
-		</p>
-			    <div className="loginLinksRow">
-				 	    <Link to="/PhoneValidation" className="loginLink" >
-				  			  Войти по номеру телефона
-				  		</Link>
-				
-						<Link to="/EmailValidation" className="loginLink loginLink_email">
-							  Войти по адресу эл. почты 
-						</Link>
-				</div>
-			  </div>
-	}
-}
+    render(){
+        return(
+            <div className="About">
+            
+              <div className="aboutHeader">
+                  
+                  <div className="backToPersonal">
+                    <Link to="/Personal" >
+                      <img src={back_personal} />
+                    </Link>
+                  </div>
+
+                <div className="aboutLogo">
+                  <img src={logo}  />
+                </div>
+              
+              </div>
+            
+              <div className="aboutTextWraper">
+                <p className="aboutText">
+                  Команда ParkON благодарит вас
+                  за скачивание нашего приложения.
+                  Количество камер и возможности 
+                  будут развиваться пропорционально
+                  с желанием аудитории пользоваться
+                  нашим сервисом.
+                <br/>
+                <br/>
+                 Проект реализован благодаря
+                 Команде ParkON  , ее вере 
+               <br/>и целеустремленности.
+               <br/> Спасибо им:Дима, Магдалина, Стас, Татьяна, Елена,
+                 Саша, Абзал, Евгения, Евгений.
+               <br/>
+               <br/>
+                 Будьте с нами)
+               </p>
+              </div>
+
+            </div>
+
+
+
+
+          ); 
+        }
+      }
